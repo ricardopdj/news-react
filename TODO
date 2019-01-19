@@ -1,0 +1,19 @@
+Criar uma tela/interface que liste as notícias armazenadas no json em anexo e
+implementar um form com um input que funcione como filtro/search de notícias.
+
+O candidato pode adicionar qualquer funcionalidade que achar necessário para melhorar a experiência,
+use HTML, CSS, JS e os frameworks/bibliotecas ou tools de sua prefencia.
+
+Inclua um README com algumas instruções para que os avaliadores possam rodar o projeto facilmente.
+
+O projeto deve rodar localmente no browser, não necessariamente precisa de um server.
+Não se preocupe com versões anteriores de browser.
+
+Preferencialmente implemente uma versão responsive que entregue uma boa experiencia
+para celulares e desktops.
+
+Um protótipo de exemplo pode ser encontrado aqui:
+
+https://wireframe.cc/bJN5D9
+
+GIST do JSON: https://gist.github.com/rlpereira/02af9e714e3bd8e726a837d8af3459f8
