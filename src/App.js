@@ -7,7 +7,9 @@ import {
   Col,
   Input,
   ListGroup,
-  ListGroupItem
+  ListGroupItem,
+  Card, Button, CardImg, CardTitle, CardText, CardColumns,
+ CardSubtitle, CardBody
 } from 'reactstrap';
 import gaucha from './img/gaucha.jpg';
 import news from './news.json';
@@ -35,10 +37,13 @@ class App extends Component {
         return (
             <Container>
                 <Row>
-                    <Col className="text-center"><img src={gaucha} alt="logo" style={{height: '100px'}}/></Col>
+                    <Col className="text-center"><img src={gaucha} alt="logo" style={{height: '150px'}}/></Col>
+                </Row>
+                <Row>
+                    <Col><h1 className="title">Notícias</h1></Col>
                 </Row>
                 <Row className="mb-3">
-                    <Col className="text-center">
+                    <Col>
                       <Debounce time="400" handler="onChange">
                         <Input
                           onChange={(event) => this.filterNews(event.target.value)}
@@ -49,15 +54,25 @@ class App extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col className="text-center">
-                        <ListGroup>
+                    <Col>
+                      <CardColumns>
                           {
                             this.state.filteredNews &&
                             this.state.filteredNews.map((n, index) =>
-                              <ListGroupItem key={index}>{n.title}</ListGroupItem>
+                              <Card>
+                                <CardImg
+                                  top
+                                  width="100%"
+                                  src={n.img}
+                                  alt="Card image cap" />
+                                <CardBody>
+                                  <CardTitle>{n.title}</CardTitle>
+                                  <CardText>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum nam totam quam sed assumenda explicabo sint.</CardText>
+                                </CardBody>
+                              </Card>
                             )
                           }
-                        </ListGroup>
+                          </CardColumns>
                     </Col>
                 </Row>
             </Container>
