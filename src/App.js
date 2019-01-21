@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+// import { HashLoader } from 'react-spinners';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {
@@ -6,24 +7,37 @@ import {
   Row,
   Col,
   Input,
-  ListGroup,
-  ListGroupItem,
-  Card, Button, CardImg, CardTitle, CardText, CardColumns,
- CardSubtitle, CardBody
+  Card,
+  CardImg,
+  CardTitle,
+  CardText,
+  CardColumns,
+  CardBody
 } from 'reactstrap';
 import gaucha from './img/gaucha.jpg';
-import news from './news.json';
 import escapeRegExp from 'escape-string-regexp'
 import { Debounce } from 'react-throttle';
 
 class App extends Component {
     state = {
-      news: news.news,
-      filteredNews: news.news
+      news: [],
+      filteredNews: [],
+      loading: true
+    }
+
+    loaded = () => {
+      document.getElementById('loader').style.display = "none";
     }
 
     componentDidMount = () => {
-      console.log(news);
+      import("./news").then(content => {
+        this.setState({
+          news: content.news,
+          filteredNews: content.news,
+          loading: false
+        })
+        this.loaded();
+      });
     }
 
     filterNews = (query) => {
@@ -35,12 +49,17 @@ class App extends Component {
 
     render() {
         return (
-            <Container>
-                <Row>
-                    <Col className="text-center"><img src={gaucha} alt="logo" style={{height: '150px'}}/></Col>
+            <Container className="h-100">
+                <Row className={this.state.loading ? "invisible" : ""}>
+                    <Col className="text-center">
+                      <img src={gaucha} alt="logo" style={{height: '150px'}}/>
+                    </Col>
                 </Row>
+
+                { !this.state.loading &&
+                <div>
                 <Row>
-                    <Col><h1 className="title">Notícias</h1></Col>
+                    <Col><h3 className="title">Notícias</h3></Col>
                 </Row>
                 <Row className="mb-3">
                     <Col>
@@ -53,18 +72,18 @@ class App extends Component {
                       </Debounce>
                     </Col>
                 </Row>
+
                 <Row>
                     <Col>
                       <CardColumns>
                           {
-                            this.state.filteredNews &&
                             this.state.filteredNews.map((n, index) =>
-                              <Card>
+                              <Card key={index}>
                                 <CardImg
                                   top
                                   width="100%"
                                   src={n.img}
-                                  alt="Card image cap" />
+                                  alt={n.title} />
                                 <CardBody>
                                   <CardTitle>{n.title}</CardTitle>
                                   <CardText>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum nam totam quam sed assumenda explicabo sint.</CardText>
@@ -75,6 +94,8 @@ class App extends Component {
                           </CardColumns>
                     </Col>
                 </Row>
+                </div>
+                }
             </Container>
         );
     }

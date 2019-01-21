@@ -5,9 +5,11 @@
   "dependencies": {
     "bootstrap": "^4.2.1",
     "escape-string-regexp": "^1.0.5",
+    "loaders.css": "^0.1.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.3",
+    "react-spinners": "^0.5.1",
     "react-throttle": "^0.3.0",
     "reactstrap": "^7.1.0"
   },

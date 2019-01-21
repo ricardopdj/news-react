@@ -1,3 +1,9 @@
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
 .App {
   text-align: center;
 }
@@ -53,4 +59,16 @@ body {
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 1.5rem;
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+      column-count: 2;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-columns {
+      column-count: 3;
+  }
 }
