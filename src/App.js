@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import { HashLoader } from 'react-spinners';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {
@@ -37,6 +36,9 @@ class App extends Component {
           loading: false
         })
         this.loaded();
+      })
+      .catch(() => {
+        alert("Ops...Não foi possível carregar as notícias!");
       });
     }
 

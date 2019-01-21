@@ -41,4 +41,3 @@ Open a terminal at the app's root folder and run `npm start`
 ## Built With
 
 * [React](https://reactjs.org/)
-* [OMDb API](http://omdbapi.com/)
